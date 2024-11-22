@@ -31,6 +31,9 @@ public class Ristorante {
         Scanner scannerInt = new Scanner(System.in);
         Utente utente = new Utente();
 
+        // questo oggetto serve per tenere traccia del utente loggato
+        Utente utenteLoggato = new Utente();
+
 
 
 
@@ -69,15 +72,28 @@ public class Ristorante {
                     break;
                 case 2: //login
 
+
+
                     System.out.println("Inserisci la parola chiave: ");
                     String pass = scannerString.nextLine();
                     checkPass(pass, utente);
                     break;
                 
-                case 3:
+                case 3: //STAMPA LISTA PIATTI
+
+                    System.out.println("LISTA PIATTI: ");
+                    getListaPiatti();
+                    break;
+
+                case 4: //STAMPA LISTA RECENSIONI
+                    
+                    System.out.println("LISTA RECENSIONI: ");
+                    getListaRecensioni();
+                    break;
+                
 
             }
-        }while(selezionato != 3);
+        }while(selezionato != 5);
 
 
         scannerString.close();
@@ -88,12 +104,10 @@ public class Ristorante {
     public static void menu()
     {
         System.out.println("1. INSERISCI UTENTE");
-        System.out.println("2. STAMPA LISTA UTENTI");
-        System.out.println("3. AGGIUNGI FILM");
-        System.out.println("4. LOGIN");
-        System.out.println("5. Noleggio film");
-        System.out.println("6. Mostro film noleggiati");
-        System.out.println("7. EXIT");
+        System.out.println("2. LOGIN");
+        System.out.println("3. STAMPA PIATTI");
+        System.out.println("4. STAMPA RECENSIONI");
+        System.out.println("5. EXIT");
 
     }
 
@@ -138,5 +152,12 @@ public class Ristorante {
         }
     }    
     
+    public static void getListaRecensioni()
+    {
+        for (String[] arr : ValutazionePiatti ) {
+            System.out.println(Arrays.toString(arr));
+            
+        }
+    }
     
 }
